@@ -1,0 +1,78 @@
+<!DOCTYPE html><!--HTML5 doctype-->
+<html>
+<head>
+	<title>Your New Application</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+	<style type="text/css">
+		/* Prevent copy paste for all elements except text fields */
+		*  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+		input, textarea  { -webkit-user-select:text; }
+		body { background-color:white; color:black }
+        label{float:left;}
+	</style>
+	<script src='intelxdk.js'></script>
+    <link rel="stylesheet"  href="css/themes/default/jquery.mobile-1.1.2.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.mobile-1.1.2.js"></script>
+    <script>
+        $(function($){
+            $('#enviar').click(function(){
+                var a = $('#a').val();
+                var b = $('#b').val();
+                var c = $('#c').val();
+
+                var delta = Math.pow(b,2)-4*a*c;
+                var x1 = (- b + Math.sqrt(delta)) /2*a;
+                var x2 = (- b - Math.sqrt(delta)) /2*a; 
+                if(delta<=0){
+                    var error = '<center> Erro! O valor de delta negativo</center>';
+                    document.getElementById("erro").innerHTML = error;
+                    $('#erro').fadeOut(3500);	
+                }
+                else{
+                    document.getElementById("mostrarDelta").innerHTML = 'Delta = ' + delta;
+                    document.getElementById("mostrarX1").innerHTML = 'X1 =' + x1;
+                    document.getElementById("mostrarX2").innerHTML = 'X2 =' + x2;
+                    $('#mostrarDelta').fadeIn();	
+                    $('#mostrarX1').fadeIn();	
+                    $('#mostrarX2').fadeIn();	
+                }
+
+            });
+        });
+</script>
+	<script type="text/javascript">
+		/* Intel native bridge is available */
+		var onDeviceReady=function(){
+		//hide splash screen
+		intel.xdk.device.hideSplashScreen();
+		};
+		document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+	</script>
+</head>
+<body>
+	<!-- content goes here-->
+    <div class="ui-body ui-body-a">
+        <center><h2>BhaskarApp - Info M1</h2><br />ax²+bx+c=0</center>
+        <!-- Repare que coloquei um ID para cada input -->
+        <label>Ax²</label>
+        <div class="campo">
+            <input id="a" placeholder="Digite o valor de A" required="required" type="text" />
+        </div>
+        <label>Bx</label>
+        <div class="campo">
+            <input id="b" placeholder="Digite o valor de B" required="required" type="text" />
+        </div>
+        <label>C</label>
+        <div class="campo">
+            <input id="c" placeholder="Digite o valor de C" required="required" type="text" />
+        </div>
+        <button id="enviar">Calcular</button>
+        <div id="erro" style="background:#FF6347;border-radius:5px;"></div>
+        <div id="mostrarDelta" style="background:#999;color:#fff;text-align:center;"></div>
+        <div id="mostrarX1" style="background:#123456;color:#fff;text-align:center;" ></div>
+        <div id="mostrarX2" style="background:#0099cc;color:#fff;text-align:center;" ></div>
+	</div>
+</body>
+</html>
