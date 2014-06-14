@@ -4,9 +4,9 @@
     "creationData": {
       "type": "Blank Project",
       "src": "blankProject",
-      "projectGuid": "541ebb1e-f0f6-4ec5-8872-b02fadfb0093",
-      "lastModifiedDate": 1401555931181,
-      "creationDate": 1401555931046
+      "projectGuid": "eb9b0574-16b7-41e6-8eba-59d8dde4e086",
+      "lastModifiedDate": 1401566753760,
+      "creationDate": 1401566753608
     },
     "sourceDirectory": "www",
     "startFile": "index.html",
